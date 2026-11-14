@@ -1,0 +1,405 @@
+/* ============================================================
+   BIOQUEST - Player Dashboard (My Progress) Stylesheet
+   ============================================================ */
+
+.dashboard-view {
+  padding: 32px 0 72px 0;
+}
+
+/* Profile Banner Card */
+.profile-banner-card {
+  background: #FFFFFF;
+  border-radius: var(--radius-xl);
+  border: 1.5px solid var(--border-light);
+  padding: 36px 40px;
+  box-shadow: var(--shadow-md);
+  margin-bottom: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.profile-main-left {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.profile-avatar-large {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--highlight-yellow) 0%, var(--accent-peach) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.8rem;
+  border: 4px solid #FFFFFF;
+  box-shadow: 0 6px 20px rgba(255, 184, 155, 0.4);
+  position: relative;
+  cursor: pointer;
+}
+
+.avatar-edit-badge {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  border: 2px solid #FFFFFF;
+}
+
+.profile-title-col {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.profile-name-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.profile-username-input {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--text-main);
+  background: transparent;
+  border: 1.5px solid transparent;
+  border-radius: var(--radius-sm);
+  padding: 2px 8px;
+  max-width: 240px;
+  transition: all var(--transition-fast);
+}
+
+.profile-username-input:focus {
+  background: #FFFFFF;
+  border-color: var(--primary);
+}
+
+.profile-rank-title {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* Level Progression Bar Box */
+.profile-level-progression {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.level-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.level-bar-shell {
+  width: 100%;
+  height: 12px;
+  background: var(--bg-surface-soft);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  border: 1px solid var(--border-light);
+}
+
+.level-bar-progress {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+  border-radius: var(--radius-full);
+  transition: width 0.8s ease;
+}
+
+/* Stats Metric 4-Card Grid */
+.dashboard-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.metric-card {
+  background: #FFFFFF;
+  border-radius: var(--radius-lg);
+  border: 1.5px solid var(--border-light);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  transition: all var(--transition-normal);
+}
+
+.metric-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-md);
+}
+
+.metric-icon-box {
+  width: 54px;
+  height: 54px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.metric-data {
+  display: flex;
+  flex-direction: column;
+}
+
+.metric-val {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--text-main);
+  line-height: 1.1;
+}
+
+.metric-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+/* Dashboard Two-Column Content Grid */
+.dashboard-content-split {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 32px;
+  margin-bottom: 40px;
+}
+
+/* Achievements Gallery Showcase */
+.achievements-card {
+  background: #FFFFFF;
+  border-radius: var(--radius-xl);
+  border: 1.5px solid var(--border-light);
+  padding: 32px;
+  box-shadow: var(--shadow-md);
+}
+
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.achievement-item {
+  background: var(--bg-surface-alt);
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--border-light);
+  padding: 18px 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  transition: all var(--transition-fast);
+}
+
+.achievement-item.unlocked {
+  background: #FFFFFF;
+  border-color: var(--accent-lavender);
+  box-shadow: 0 4px 14px rgba(180, 154, 255, 0.15);
+}
+
+.achievement-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  background: #EAEFF7;
+  color: #9EA8BA;
+  flex-shrink: 0;
+}
+
+.achievement-item.unlocked .achievement-icon {
+  background: linear-gradient(135deg, #F4EFFF 0%, #FFF0EA 100%);
+  color: var(--accent-lavender);
+  box-shadow: 0 4px 10px rgba(180, 154, 255, 0.25);
+}
+
+.achievement-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.achievement-title {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.achievement-desc {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  line-height: 1.35;
+}
+
+/* Recent Activity Feed Card */
+.activity-card {
+  background: #FFFFFF;
+  border-radius: var(--radius-xl);
+  border: 1.5px solid var(--border-light);
+  padding: 32px;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+}
+
+.activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.activity-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: var(--bg-surface-alt);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-light);
+}
+
+.activity-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.activity-icon-badge {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background: var(--primary-light);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+.activity-meta h5 {
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.activity-meta span {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.activity-score-badge {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+/* Category Mastery Visual Chart */
+.mastery-chart-box {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.mastery-bar-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mastery-bar-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.mastery-track {
+  width: 100%;
+  height: 8px;
+  background: var(--bg-surface-soft);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.mastery-fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  transition: width 0.6s ease;
+}
+
+/* Dashboard Bottom Actions: Reset Progress */
+.dashboard-bottom-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 28px;
+  background: #FFFFFF;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-light);
+}
+
+.btn-danger-outline {
+  padding: 8px 18px;
+  border-radius: var(--radius-full);
+  border: 1.5px solid #FFCDD2;
+  color: #C62828;
+  font-size: 0.84rem;
+  font-weight: 700;
+  background: #FFF5F5;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-danger-outline:hover {
+  background: #FFEBEE;
+  border-color: #EF5350;
+}
+
+@media (max-width: 992px) {
+  .dashboard-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .dashboard-content-split {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .dashboard-stats-grid {
+    grid-template-columns: 1fr;
+  }
+  .profile-level-progression {
+    width: 100%;
+  }
+}

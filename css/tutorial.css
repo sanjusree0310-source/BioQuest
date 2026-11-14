@@ -1,0 +1,226 @@
+/* ============================================================
+   BIOQUEST - Interactive Guided Tutorial Demo System Stylesheet
+   ============================================================ */
+
+/* Fullscreen Tutorial Overlay */
+.tutorial-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1500;
+  display: none;
+}
+
+.tutorial-overlay.active {
+  display: block;
+}
+
+/* Tutorial HUD Bar at the top of board */
+.tutorial-hud-bar {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  border: 2px solid var(--accent-lavender);
+  border-radius: var(--radius-full);
+  padding: 8px 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 0 10px 30px rgba(180, 154, 255, 0.25);
+  pointer-events: auto;
+  z-index: 1600;
+}
+
+.tutorial-mode-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--accent-lavender);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.tutorial-step-counter {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.tutorial-hud-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Spotlight Highlight Ring around active element */
+.tutorial-spotlight-ring {
+  position: absolute;
+  border-radius: var(--radius-md);
+  border: 3px solid var(--accent-lavender);
+  box-shadow: 0 0 0 9999px rgba(38, 51, 74, 0.42), 0 0 25px rgba(180, 154, 255, 0.9);
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 1550;
+  animation: pulseSpotlight 2s infinite ease-in-out;
+}
+
+@keyframes pulseSpotlight {
+  0%, 100% {
+    box-shadow: 0 0 0 9999px rgba(38, 51, 74, 0.42), 0 0 20px rgba(180, 154, 255, 0.8);
+  }
+  50% {
+    box-shadow: 0 0 0 9999px rgba(38, 51, 74, 0.42), 0 0 35px rgba(180, 154, 255, 1);
+  }
+}
+
+/* Animated Hand Cursor */
+.tutorial-hand-cursor {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  font-size: 2.2rem;
+  pointer-events: none;
+  z-index: 1650;
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  filter: drop-shadow(0 6px 12px rgba(0,0,0,0.3));
+  animation: handTapAnimation 1.2s infinite ease-in-out;
+}
+
+@keyframes handTapAnimation {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-6px, -10px) scale(1.15) rotate(-10deg);
+  }
+}
+
+/* Step Guidance Dialog Card */
+.tutorial-guidance-card {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #FFFFFF;
+  border: 2px solid var(--accent-lavender);
+  border-radius: var(--radius-xl);
+  padding: 20px 28px;
+  box-shadow: 0 16px 40px rgba(38, 51, 74, 0.18);
+  max-width: 580px;
+  width: 90%;
+  pointer-events: auto;
+  z-index: 1600;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  animation: slideToast 0.35s ease;
+}
+
+.guidance-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.guidance-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #F4EFFF;
+  color: var(--accent-lavender);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.guidance-text h4 {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 4px;
+}
+
+.guidance-text p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* Feedback Banner upon correct action */
+.tutorial-feedback-pill {
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary);
+  color: #FFFFFF;
+  padding: 10px 24px;
+  border-radius: var(--radius-full);
+  font-weight: 800;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 10px 24px rgba(97, 201, 168, 0.4);
+  z-index: 1700;
+  animation: slideToast 0.3s ease;
+}
+
+/* Tutorial Completed Dialog */
+.tutorial-finish-dialog {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #FFFFFF;
+  border-radius: var(--radius-xl);
+  border: 2.5px solid var(--primary);
+  padding: 36px 44px;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(38, 51, 74, 0.25);
+  max-width: 460px;
+  width: 90%;
+  pointer-events: auto;
+  z-index: 1800;
+  animation: pulseSubtle 0.5s ease;
+}
+
+.tutorial-finish-dialog.active {
+  display: block;
+}
+
+.tutorial-finish-icon {
+  font-size: 3rem;
+  margin-bottom: 12px;
+}
+
+.tutorial-finish-dialog h3 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 8px;
+}
+
+.tutorial-finish-dialog p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+.tutorial-finish-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}

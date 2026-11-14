@@ -1,0 +1,282 @@
+/* ============================================================
+   BIOQUEST - Game Library & Cards Stylesheet
+   ============================================================ */
+
+.games-library-view {
+  padding: 32px 0 72px 0;
+}
+
+/* Filter and Search Bar */
+.games-filter-container {
+  background: #FFFFFF;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-light);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.filter-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.search-input-wrapper {
+  position: relative;
+  flex: 1;
+  max-width: 440px;
+}
+
+.search-input-wrapper svg {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 18px 12px 46px;
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--border-light);
+  background: var(--bg-surface-alt);
+  font-family: var(--font-family);
+  font-size: 0.92rem;
+  color: var(--text-main);
+  outline: none;
+  transition: all var(--transition-fast);
+}
+
+.search-input:focus {
+  background: #FFFFFF;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(97, 201, 168, 0.15);
+}
+
+.difficulty-pill-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filter-pill {
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  font-weight: 700;
+  border: 1.5px solid var(--border-light);
+  background: #FFFFFF;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.filter-pill:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.filter-pill.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #FFFFFF;
+  box-shadow: var(--shadow-primary);
+}
+
+/* Category Filter Tabs Scrollable */
+.category-tabs-scroll {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.category-tab-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: var(--radius-full);
+  font-size: 0.84rem;
+  font-weight: 700;
+  white-space: nowrap;
+  background: var(--bg-surface-alt);
+  color: var(--text-muted);
+  border: 1px solid var(--border-light);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.category-tab-btn:hover {
+  background: var(--primary-light);
+  color: var(--primary);
+  border-color: rgba(97, 201, 168, 0.4);
+}
+
+.category-tab-btn.active {
+  background: linear-gradient(135deg, var(--primary) 0%, #43BFA0 100%);
+  color: #FFFFFF;
+  border-color: var(--primary);
+  box-shadow: var(--shadow-primary);
+}
+
+/* Game Library Grid */
+.game-library-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 32px;
+}
+
+/* Game Card Component */
+.game-card {
+  background: #FFFFFF;
+  border-radius: var(--radius-xl);
+  border: 1.5px solid var(--border-light);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-normal);
+  position: relative;
+}
+
+.game-card:hover {
+  border-color: var(--border-hover);
+  box-shadow: 0 16px 36px rgba(38, 51, 74, 0.12);
+  transform: translateY(-6px);
+}
+
+/* Card Visual Header */
+.game-card-visual {
+  position: relative;
+  width: 100%;
+  height: 195px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(135deg, #F3F8FE 0%, #E6F3FE 100%);
+}
+
+.game-card-svg {
+  width: 100%;
+  height: 100%;
+  transition: transform var(--transition-bounce);
+}
+
+.game-card:hover .game-card-svg {
+  transform: scale(1.05);
+}
+
+.game-card-badges {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  right: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: none;
+}
+
+.game-time-badge {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(6px);
+  border-radius: var(--radius-full);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-main);
+  box-shadow: var(--shadow-sm);
+}
+
+.game-time-badge svg {
+  width: 12px;
+  height: 12px;
+  color: var(--secondary);
+}
+
+/* Card Body */
+.game-card-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.game-card-cat-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.game-card-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 8px;
+  line-height: 1.25;
+}
+
+.game-card-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 20px;
+  flex: 1;
+}
+
+/* Card Progress bar if previously played */
+.game-card-progress {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: var(--bg-surface-alt);
+  border-radius: var(--radius-md);
+  margin-bottom: 20px;
+}
+
+.game-card-stars {
+  display: flex;
+  gap: 3px;
+  color: #D6DFEC;
+}
+
+.game-card-stars .star-active {
+  color: #FFC000;
+}
+
+.game-card-best-score {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* Action Buttons Footer */
+.game-card-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+@media (max-width: 768px) {
+  .game-library-grid {
+    grid-template-columns: 1fr;
+  }
+}

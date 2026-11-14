@@ -1,0 +1,298 @@
+/* ============================================================
+   BIOQUEST - Responsive Navigation Stylesheet
+   ============================================================ */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border-light);
+  transition: all var(--transition-normal);
+}
+
+.navbar.scrolled {
+  box-shadow: 0 4px 20px rgba(38, 51, 74, 0.06);
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 76px;
+  gap: 20px;
+}
+
+/* Brand Logo */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.brand-icon-wrapper {
+  width: 46px;
+  height: 46px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--primary-light) 0%, var(--secondary-light) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(97, 201, 168, 0.25);
+  border: 1px solid rgba(97, 201, 168, 0.3);
+  transition: transform var(--transition-bounce);
+}
+
+.brand:hover .brand-icon-wrapper {
+  transform: rotate(-6deg) scale(1.08);
+}
+
+.brand-text-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-name {
+  font-size: 1.45rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: var(--text-main);
+  line-height: 1.1;
+  display: flex;
+  align-items: center;
+}
+
+.brand-name span.highlight {
+  background: linear-gradient(135deg, var(--primary) 0%, #3DAA8A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.brand-tagline {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.2px;
+}
+
+/* Nav Links Desktop */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  list-style: none;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  border-radius: var(--radius-full);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.nav-link svg {
+  width: 18px;
+  height: 18px;
+  stroke-width: 2.2;
+}
+
+.nav-link:hover {
+  color: var(--primary);
+  background: var(--primary-light);
+}
+
+.nav-link.active {
+  color: var(--primary);
+  background: var(--primary-light);
+  border-color: rgba(97, 201, 168, 0.35);
+  font-weight: 700;
+}
+
+/* Right Nav: Player Profile & Sound */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+/* Sound Toggle */
+.btn-sound-toggle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bg-surface-alt);
+  border: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.btn-sound-toggle:hover {
+  background: var(--secondary-light);
+  color: var(--secondary);
+  border-color: var(--secondary);
+  transform: scale(1.05);
+}
+
+.btn-sound-toggle.muted {
+  color: var(--text-light);
+}
+
+/* Player Profile Pill */
+.player-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 14px 6px 8px;
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.player-pill:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-primary);
+  transform: translateY(-1px);
+}
+
+.player-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--highlight-yellow) 0%, var(--accent-peach) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  border: 2px solid #FFFFFF;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.player-info-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.player-name-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.player-username {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--text-main);
+  max-width: 95px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.player-level-badge {
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 2px 7px;
+  background: linear-gradient(135deg, var(--highlight-yellow) 0%, #FFD666 100%);
+  color: #7A5300;
+  border-radius: var(--radius-full);
+}
+
+.player-xp-counter {
+  font-size: 0.74rem;
+  font-weight: 800;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.player-xp-counter svg {
+  width: 12px;
+  height: 12px;
+}
+
+/* Mobile Menu Button */
+.btn-mobile-toggle {
+  display: none;
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-md);
+  background: var(--bg-surface-alt);
+  border: 1px solid var(--border-light);
+  color: var(--text-main);
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* Mobile Drawer Overlay */
+.mobile-nav-drawer {
+  position: fixed;
+  top: 76px;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 76px);
+  background: rgba(250, 252, 255, 0.98);
+  backdrop-filter: blur(16px);
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  gap: 16px;
+  transform: translateX(-100%);
+  transition: transform var(--transition-normal);
+  z-index: 999;
+  border-top: 1px solid var(--border-light);
+  overflow-y: auto;
+}
+
+.mobile-nav-drawer.open {
+  transform: translateX(0);
+}
+
+.mobile-nav-drawer .nav-link {
+  padding: 14px 20px;
+  font-size: 1.05rem;
+  border-radius: var(--radius-md);
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 992px) {
+  .nav-links {
+    display: none;
+  }
+  .btn-mobile-toggle {
+    display: flex;
+  }
+}
+
+@media (max-width: 576px) {
+  .brand-tagline {
+    display: none;
+  }
+  .player-info-meta {
+    display: none;
+  }
+  .player-pill {
+    padding: 4px;
+  }
+}
