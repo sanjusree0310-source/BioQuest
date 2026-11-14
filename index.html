@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BIOQUEST – Learn Biology. Play Adventures. Discover Life.</title>
+  <meta name="description" content="BIOQUEST is the ultimate Biology educational gaming platform where students learn life sciences through games, 3D simulations, and hands-on experiments." />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+  <!-- Google Fonts: Plus Jakarta Sans & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/navbar.css" />
+  <link rel="stylesheet" href="css/home.css" />
+  <link rel="stylesheet" href="css/games.css" />
+  <link rel="stylesheet" href="css/game-engine.css" />
+  <link rel="stylesheet" href="css/tutorial.css" />
+  <link rel="stylesheet" href="css/learning-zone.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/leaderboard.css" />
+</head>
+<body>
+
+  <!-- Ambient Light Orbs -->
+  <div class="ambient-bg">
+    <div class="ambient-orb ambient-orb-1"></div>
+    <div class="ambient-orb ambient-orb-2"></div>
+    <div class="ambient-orb ambient-orb-3"></div>
+  </div>
+
+  <!-- Confetti Canvas -->
+  <canvas id="confettiCanvas"></canvas>
+
+  <!-- ================= TOP NAVIGATION BAR ================= -->
+  <header class="navbar" id="topNavbar">
+    <div class="container nav-container">
+      <!-- BIOQUEST Brand Logo (DNA + Leaf + Cell) -->
+      <a href="#home" class="brand" data-route="home">
+        <div class="brand-icon-wrapper">
+          <svg viewBox="0 0 40 40" width="30" height="30" fill="none">
+            <!-- Cell Circle -->
+            <circle cx="20" cy="20" r="17" fill="rgba(97, 201, 168, 0.2)" stroke="#61C9A8" stroke-width="2.5"/>
+            <!-- Leaf Outline -->
+            <path d="M 12 28 C 12 16, 26 10, 30 10 C 30 24, 22 28, 12 28 Z" fill="#61C9A8" opacity="0.85"/>
+            <!-- Leaf Center Vein -->
+            <path d="M 14 26 Q 20 20 28 12" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+            <!-- DNA Helix Double Strand hints -->
+            <circle cx="15" cy="14" r="2.5" fill="#74B9FF"/>
+            <circle cx="24" cy="26" r="2.5" fill="#B49AFF"/>
+            <line x1="15" y1="14" x2="20" y2="18" stroke="#74B9FF" stroke-width="1.5"/>
+            <line x1="20" y1="22" x2="24" y2="26" stroke="#B49AFF" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="brand-text-group">
+          <div class="brand-name">BIO<span class="highlight">QUEST</span></div>
+          <span class="brand-tagline">Learn Biology. Play Adventures. Discover Life.</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#home" class="nav-link active" data-route="home">Home</a></li>
+          <li><a href="#explore" class="nav-link" data-route="explore">Explore Games</a></li>
+          <li><a href="#learning" class="nav-link" data-route="learning">Learning Zone</a></li>
+          <li><a href="#progress" class="nav-link" data-route="progress">My Progress</a></li>
+          <li><a href="#progress" class="nav-link" data-route="progress">Achievements</a></li>
+          <li><a href="#leaderboard" class="nav-link" data-route="leaderboard">Leaderboard</a></li>
+        </ul>
+      </nav>
+
+      <!-- Right Nav Actions: Sound & Player Info -->
+      <div class="nav-actions">
+        <!-- Sound Toggle -->
+        <button class="btn-sound-toggle" id="soundToggleBtn" aria-label="Toggle sound effects" title="Toggle Sound">
+          🔊
+        </button>
+
+        <!-- Player Profile Badge -->
+        <div class="player-pill" data-route="progress" title="View Your Profile">
+          <div class="player-avatar" id="navAvatar">🧬</div>
+          <div class="player-info-meta">
+            <div class="player-name-row">
+              <span class="player-username" id="navUsername">BioAdventurer</span>
+              <span class="player-level-badge" id="navLevelBadge">Lvl 1</span>
+            </div>
+            <span class="player-xp-counter" id="navXpCounter">✨ 0 XP</span>
+          </div>
+        </div>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="btn-mobile-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu">
+          ☰
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-nav-drawer" id="mobileNavDrawer">
+    <a href="#home" class="nav-link active" data-route="home">🏠 Home</a>
+    <a href="#explore" class="nav-link" data-route="explore">🎮 Explore Games</a>
+    <a href="#learning" class="nav-link" data-route="learning">📖 Learning Zone</a>
+    <a href="#progress" class="nav-link" data-route="progress">📊 My Progress</a>
+    <a href="#progress" class="nav-link" data-route="progress">🎖️ Achievements</a>
+    <a href="#leaderboard" class="nav-link" data-route="leaderboard">🏆 Leaderboard</a>
+  </div>
+
+  <!-- ================= VIEW 1: HOME PAGE ================= -->
+  <main class="app-view" id="view_home">
+    <div class="container">
+      <!-- Hero Section -->
+      <section class="hero-section">
+        <div class="hero-grid">
+          <div class="hero-content">
+            <div class="hero-pill">
+              <span class="hero-pill-sparkle">✦</span>
+              <span class="hero-pill-text">Gamified Biology Adventure</span>
+            </div>
+            <h1 class="hero-heading">
+              Ready for a <br />
+              <span class="gradient-text">Biology Adventure?</span>
+            </h1>
+            <p class="hero-description">
+              Explore the wonders of life through exciting games, interactive experiments and scientific challenges designed for college students and life science explorers.
+            </p>
+            <div class="hero-cta-group">
+              <button class="btn btn-primary btn-lg" data-route="explore">
+                <span>🚀</span> START ADVENTURE
+              </button>
+              <button class="btn btn-outline btn-lg" data-route="explore">
+                <span>🎮</span> EXPLORE GAMES
+              </button>
+            </div>
+          </div>
+
+          <!-- Animated 3D Biology Illustration Canvas -->
+          <div class="hero-visual-wrapper">
+            <div class="hero-canvas-card">
+              <canvas id="hero3dCanvas"></canvas>
+              <div class="hero-visual-badge">
+                <div class="status-dot"></div>
+                <span>Interactive 3D Biomolecular Engine</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section A: Featured Games -->
+      <section style="margin-bottom: 56px;">
+        <div class="section-header">
+          <div class="section-title-group">
+            <span class="section-subtitle">Recommended Games</span>
+            <h2 class="section-title">Featured Biology Quests</h2>
+          </div>
+          <button class="btn btn-outline" data-route="explore">View All 10 Games ➔</button>
+        </div>
+        <div class="featured-grid" id="featuredGamesGrid">
+          <!-- Populated dynamically via app.js -->
+        </div>
+      </section>
+
+      <!-- Section B: Daily Biology Challenge -->
+      <section>
+        <div class="daily-challenge-banner">
+          <div class="daily-icon-box">💡</div>
+          <div class="daily-content">
+            <div class="daily-tag-row">
+              <span class="daily-reward-badge">+25 XP Reward</span>
+              <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted);">Biochemistry Challenge</span>
+            </div>
+            <h3 class="daily-title">Daily Biology Challenge</h3>
+            <p class="daily-desc">
+              Test your knowledge on plant cell walls, microfibril cellulose, and enzymatic digestion. Solve the challenge to earn today's 25 bonus XP!
+            </p>
+          </div>
+          <div class="daily-action-col">
+            <button class="btn btn-primary btn-lg" id="btnStartDailyChallenge">
+              START CHALLENGE ➔
+            </button>
+            <span class="daily-timer">⏰ Resets daily at midnight</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section C: Continue Playing -->
+      <section style="margin-bottom: 56px;">
+        <div class="section-header">
+          <div class="section-title-group">
+            <span class="section-subtitle">Jump Back In</span>
+            <h2 class="section-title">Continue Playing</h2>
+          </div>
+        </div>
+        <div id="continuePlayingMount">
+          <!-- Populated dynamically -->
+        </div>
+      </section>
+
+      <!-- Section D: Your Learning Journey -->
+      <section style="margin-bottom: 64px;">
+        <div class="journey-banner">
+          <div class="section-title-group">
+            <span class="section-subtitle">Player Metrics</span>
+            <h2 class="section-title">Your Learning Journey</h2>
+          </div>
+          <div class="journey-stats-grid">
+            <div class="stat-box">
+              <div class="stat-icon mint">✨</div>
+              <div class="stat-data">
+                <span class="stat-val" id="journeyXP">0</span>
+                <span class="stat-label">Total XP Earned</span>
+              </div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-icon blue">🎮</div>
+              <div class="stat-data">
+                <span class="stat-val" id="journeyGamesDone">0</span>
+                <span class="stat-label">Games Completed</span>
+              </div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-icon yellow">👑</div>
+              <div class="stat-data">
+                <span class="stat-val" id="journeyLevel">1</span>
+                <span class="stat-label">Current Player Level</span>
+              </div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-icon lavender">🎖️</div>
+              <div class="stat-data">
+                <span class="stat-val" id="journeyAchievements">0 / 8</span>
+                <span class="stat-label">Achievement Badges</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section E: How BioQuest Works -->
+      <section class="how-it-works-section">
+        <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+          <span class="section-subtitle">Simple & Engaging</span>
+          <h2 class="section-title">How BioQuest Works</h2>
+          <p class="section-description">Master biological concepts through hands-on adventures in three easy steps.</p>
+        </div>
+
+        <div class="steps-grid">
+          <div class="step-card step-1">
+            <div class="step-badge">1</div>
+            <div class="step-icon-wrapper">🎯</div>
+            <h4 class="step-title">Choose a Game</h4>
+            <p class="step-desc">Pick from 10 distinct interactive games covering cell biology, genetics, anatomy, and ecology.</p>
+          </div>
+
+          <div class="step-card step-2">
+            <div class="step-badge">2</div>
+            <div class="step-icon-wrapper">🔬</div>
+            <h4 class="step-title">Learn by Playing</h4>
+            <p class="step-desc">Solve puzzles, build ecosystems, sequence DNA bases, and operate virtual laboratory microscopes.</p>
+          </div>
+
+          <div class="step-card step-3">
+            <div class="step-badge">3</div>
+            <div class="step-icon-wrapper">🏆</div>
+            <h4 class="step-title">Earn XP & Badges</h4>
+            <p class="step-desc">Gain experience points, climb from Beginner to Biology Master, and top the global leaderboard.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- ================= VIEW 2: EXPLORE GAMES ================= -->
+  <main class="app-view" id="view_explore" style="display: none;">
+    <div class="container games-library-view">
+      <div class="section-header">
+        <div class="section-title-group">
+          <span class="section-subtitle">Full Adventure Library</span>
+          <h1 class="section-title">Explore Biology Games</h1>
+          <p class="section-description">10 unique, fully-playable games featuring interactive simulations and step-by-step guided demos.</p>
+        </div>
+      </div>
+
+      <!-- Filters & Search Toolbar -->
+      <div class="games-filter-container">
+        <div class="filter-top-row">
+          <div class="search-input-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" class="search-input" id="gameSearchInput" placeholder="Search by game name, topic, or keyword..." />
+          </div>
+
+          <div class="difficulty-pill-group">
+            <button class="filter-pill active" data-diff="All">All Difficulties</button>
+            <button class="filter-pill" data-diff="Beginner">Beginner</button>
+            <button class="filter-pill" data-diff="Intermediate">Intermediate</button>
+            <button class="filter-pill" data-diff="Advanced">Advanced</button>
+          </div>
+        </div>
+
+        <!-- Scrollable Category Tabs -->
+        <div class="category-tabs-scroll" id="categoryTabsScroll">
+          <!-- Populated dynamically via app.js -->
+        </div>
+      </div>
+
+      <!-- 10 Game Cards Grid -->
+      <div class="game-library-grid" id="gamesLibraryGrid">
+        <!-- Populated dynamically via app.js -->
+      </div>
+    </div>
+  </main>
+
+  <!-- ================= VIEW 3: LEARNING ZONE ================= -->
+  <main class="app-view" id="view_learning" style="display: none;">
+    <div id="learningZoneMount"></div>
+  </main>
+
+  <!-- ================= VIEW 4: MY PROGRESS (DASHBOARD) ================= -->
+  <main class="app-view" id="view_progress" style="display: none;">
+    <div id="dashboardMount"></div>
+  </main>
+
+  <!-- ================= VIEW 5: LEADERBOARD ================= -->
+  <main class="app-view" id="view_leaderboard" style="display: none;">
+    <div id="leaderboardMount"></div>
+  </main>
+
+  <!-- ================= ACTIVE GAME ARENA SCREEN ================= -->
+  <div class="game-arena-view" id="gameArenaView">
+    <!-- Arena Header / HUD -->
+    <header class="arena-header">
+      <div class="arena-header-container">
+        <div class="arena-header-left">
+          <button class="btn-back-library" id="btnArenaBack">
+            <span>⟵</span> Back to Games
+          </button>
+          <div class="arena-game-meta">
+            <h2 class="arena-game-title" id="arenaGameTitle">Game Arena</h2>
+            <span class="arena-game-cat" id="arenaGameCategory">Interactive Biology Simulation</span>
+          </div>
+        </div>
+
+        <!-- Level Selector Tabs -->
+        <div class="arena-level-tabs" id="arenaLevelTabsMount">
+          <!-- Rendered dynamically -->
+        </div>
+
+        <!-- Live HUD Stats -->
+        <div class="arena-header-right">
+          <div class="hud-stat-pill score-pill">
+            <span>⭐</span> <span id="arenaLiveScore">Score: 0</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Game Board Container -->
+    <div class="arena-playground">
+      <div class="game-active-board" id="gameArenaBoard">
+        <!-- Active game engine mounts here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= SCRIPTS ================= -->
+  <script src="js/audio.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/hero3d.js"></script>
+  <script src="js/tutorials/tutorial-engine.js"></script>
+  <!-- 10 Games -->
+  <script src="js/games/game1_cell_explorer.js"></script>
+  <script src="js/games/game2_body_builder.js"></script>
+  <script src="js/games/game3_dna_codebreaker.js"></script>
+  <script src="js/games/game4_germ_busters.js"></script>
+  <script src="js/games/game5_eco_world.js"></script>
+  <script src="js/games/game6_photosynthesis.js"></script>
+  <script src="js/games/game7_microbe_detective.js"></script>
+  <script src="js/games/game8_brain_maze.js"></script>
+  <script src="js/games/game9_digestive_journey.js"></script>
+  <script src="js/games/game10_bloodstream_delivery.js"></script>
+  <!-- Hubs & Main App -->
+  <script src="js/learning_zone.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script src="js/leaderboard.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>
